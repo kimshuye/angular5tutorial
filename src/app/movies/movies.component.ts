@@ -25,6 +25,6 @@ export class MoviesComponent implements OnInit {
   onSelect(movie: Movie): void {
       this.selectedMovie = movie;
       console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
-      alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+      // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
   }
 }

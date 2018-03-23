@@ -1,3 +1,8 @@
+
+.parent {
+  display: flex;
+}
+
 .selected {
   background: mediumseagreen !important;
   /* background: mediumseagreen; */
@@ -19,4 +24,14 @@
   padding: 0.3em;
   margin: 0.2em;
   text-align: left;
+}
+
+.details {  
+  background: mediumseagreen;
+  color: white;
+  padding: 0.5em;
+  margin: 1em;        
+  max-width: 20em;  
+  text-align: left;
+  font-size: 0.875em; /* 14px/16=0.875em */
 }
