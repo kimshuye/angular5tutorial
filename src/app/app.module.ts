@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 import { MoviesComponent } from './movies/movies.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
