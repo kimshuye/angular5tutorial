@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie';
+import { fakeMovies } from '../fake-movies';
 
 @Component({
   selector: 'app-movies',
@@ -13,6 +14,7 @@ export class MoviesComponent implements OnInit {
     name: "Star Wars",
     releaseYear: 1977
   }
+  movies = fakeMovies;
 
   constructor() { }
 
