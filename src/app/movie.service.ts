@@ -5,13 +5,15 @@ import { Movie } from '../models/movie';
 //Get data asynchronously with Observable
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { MessageService } from './message.service';
 
 @Injectable()
 export class MovieService {
 
-  constructor() { }
+  constructor(public messageService: MessageService) { }
 
   getMovies(): Observable<Movie[]>{
+    this.messageService.add(`${ new Date().toLocaleString()}. Get movie list`);
     return of(fakeMovies);
   }
 
