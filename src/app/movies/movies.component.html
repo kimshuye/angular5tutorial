@@ -6,7 +6,11 @@
             [class.selected]="eachMovie === selectedMovie" 
             (click)="onSelect(eachMovie)">
             {{eachMovie.name}} - {{eachMovie.releaseYear}}
+            <div *ngIf="eachMovie === selectedMovie">
+            <input type="text" [(ngModel)]="selectedMovie.name" name="" id=""><br><br>
+            <input type="text" [(ngModel)]="selectedMovie.releaseYear" name="" id="">
+            </div>
         </li>
     </ol>
-    <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
+    <app-movie-detail [(movie)]="selectedMovie"></app-movie-detail>
 </div>

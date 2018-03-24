@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input ,Output } from '@angular/core';
 import { Movie } from '../../models/movie';
 
 @Component({
@@ -8,7 +8,11 @@ import { Movie } from '../../models/movie';
 })
 export class MovieDetailComponent implements OnInit {
 
-  @Input() movie: Movie;
+  @Input()@Output() movie:Movie = {
+    id: 1,
+    name: "Star Wars",
+    releaseYear: 1977
+  };
   
   constructor() { }
 
