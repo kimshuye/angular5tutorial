@@ -13,13 +13,15 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieService } from './movie.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
     MovieDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
