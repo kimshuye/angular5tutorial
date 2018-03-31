@@ -34,11 +34,13 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this.getMoviesFromService();
   }
+
   //Action when select a Movie in List item
-  selectedMovie: Movie;
-  onSelect(movie: Movie): void {
-      this.selectedMovie = movie;
-      console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
-      // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
-  }
+  // selectedMovie: Movie;
+  // onSelect(movie: Movie): void {
+  //     this.selectedMovie = movie;
+  //     console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+  //     // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+  // }
+
 }

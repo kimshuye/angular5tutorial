@@ -1,6 +1,12 @@
 import { Component, OnInit, Input ,Output } from '@angular/core';
 import { Movie } from '../../models/movie';
 
+// Router
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { MovieService } from '../movie.service';
+
+
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -8,15 +14,27 @@ import { Movie } from '../../models/movie';
 })
 export class MovieDetailComponent implements OnInit {
 
-  @Input()@Output() movie:Movie = {
-    id: 1,
-    name: "Star Wars",
-    releaseYear: 1977
-  };
+  @Input()@Output() movie: Movie;
   
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
+    this.getMovieFromRoute();
+  }
+
+  getMovieFromRoute(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(`this.route.snapshot.paramMap = ${JSON.stringify(this.route.snapshot.paramMap)}`);
+    //Call service to "get movie from id" ?
+    this.movieService.getMovieFromId(id).subscribe(movie => this.movie = movie);          
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
