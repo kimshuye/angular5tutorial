@@ -47,5 +47,5 @@ Thumbs.db
 /src/environments
 
 # DB
-moviesdb.json
 moviesdb_key.json
+moviesdb_edit.json
