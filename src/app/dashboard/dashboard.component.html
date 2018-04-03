@@ -1,7 +1,7 @@
 
 <h3>Top 4 movies</h3>
 <div>
- <a *ngFor="let movie of movies" class="col-1-4"
+ <a *ngFor="let movie of movies | async" class="col-1-4"
   style="text-decoration:none;"
   routerLink="/detail/{{movie.id}}"
  >

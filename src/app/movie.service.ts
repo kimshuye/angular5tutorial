@@ -28,20 +28,24 @@ export class MovieService {
     public messageService: MessageService
   ) { }
 
-  getMovies() : Observable <Movie[]>{
+  // getMovies() : Observable <Movie[]>{
+  getMovies() {
 
     // Fake Data
     // this.messageService.add(`${ new Date().toLocaleString()}. Get movie list`);
     // return of(fakeMovies);
 
     // REST API
-    return this.http.get<Movie[]>(this.moviesURL + '/movies/' + '.json').pipe(
-      tap(receivedMovies => console.log(`receivedMovies = ${JSON.stringify(receivedMovies)}`)),
-      catchError(error => of([]))
-    );
+    // return this.http.get<Movie[]>(this.moviesURL + '/movies/' + '.json').pipe(
+    //   tap(receivedMovies => console.log(`receivedMovies = ${JSON.stringify(receivedMovies)}`)),
+    //   catchError(error => of([]))
+    // );
 
     // General code Angular Fire Database
-    // return this.db.list<Movie>("movies") ;
+    this.movies = this.db.list<Movie>("movies");
+    console.log('receivedMovies = ' + this.movies);
+    return this.movies;
+    
   }
 
   getMovieFromId(id: number): Observable<Movie> {    

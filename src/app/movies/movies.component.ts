@@ -20,7 +20,12 @@ export class MoviesComponent implements OnInit {
 
   // movies = fakeMovies;
 
-  movies: Movie[];
+  // REST API
+  // movies: Movie[];
+
+  // Angular Firebase
+  movies: any;
+  
 
   constructor(private movieService:MovieService) {  
 
@@ -31,8 +36,12 @@ export class MoviesComponent implements OnInit {
     // this.movies = this.movieService.getMovies();
     
     // REST API
-    this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
+    // this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
 
+    // Angular Firebase
+    this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
+      return changes.map(c => ({ ...c.payload.val() }));
+    });
 
   }
 
