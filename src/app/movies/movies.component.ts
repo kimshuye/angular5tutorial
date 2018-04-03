@@ -27,8 +27,13 @@ export class MoviesComponent implements OnInit {
   }
 
   getMoviesFromService(){
+    // Get Fake Data
     // this.movies = this.movieService.getMovies();
-    this.movieService.getMovies().valueChanges().subscribe(updatedMovies => this.movies = updatedMovies);
+    
+    // REST API
+    this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
+
+
   }
 
   ngOnInit() {
