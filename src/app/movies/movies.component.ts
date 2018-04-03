@@ -20,7 +20,11 @@ export class MoviesComponent implements OnInit {
 
   // movies = fakeMovies;
 
+  // REST API
   movies: Movie[];
+
+  // Angular Firebase
+  // movies: any;
 
   constructor(private movieService:MovieService) {  
 
@@ -33,14 +37,19 @@ export class MoviesComponent implements OnInit {
     // REST API
     this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
 
-
+    // Angular Firebase
+    // this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
+    //   return changes.map(c => ({ ...c.payload.val() }));
+    // });
   }
 
   ngOnInit() {
     this.getMoviesFromService();
   }
+
   //Action when select a Movie in List item
   selectedMovie: Movie;
+  
   onSelect(movie: Movie): void {
       this.selectedMovie = movie;
       console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);

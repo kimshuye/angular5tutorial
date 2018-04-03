@@ -9,7 +9,11 @@ import { MovieService } from '../movie.service';
 })
 export class DashboardComponent implements OnInit {
 
+  // REST API
   movies: Movie[] = [];
+  
+  // Angular Firebase
+  // movies: any;
 
   constructor(private movieService: MovieService) { }
 
@@ -18,7 +22,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getMovies(){
+    // REST API
     this.movieService.getMovies().subscribe(movies => this.movies = movies.slice(1,5) );
+
+    // Angular Firebase
+    // this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
+    //   return changes.map(c => ({ ...c.payload.val() })).slice(0,4);
+    // });
   }
 
 }
