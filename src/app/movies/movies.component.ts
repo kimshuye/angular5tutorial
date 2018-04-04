@@ -31,6 +31,10 @@ export class MoviesComponent implements OnInit {
 
   }
 
+  ngOnInit() {
+    this.getMoviesFromService();
+  }
+
   getMoviesFromService(){
     // Get Fake Data
     // this.movies = this.movieService.getMovies();
@@ -39,20 +43,23 @@ export class MoviesComponent implements OnInit {
     // this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
 
     // Angular Firebase
-    this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
-      return changes.map(c => ({ ...c.payload.val() }));
+    this.movieService.getMovies().valueChanges().subscribe(snapMovies => {
+      this.movies = snapMovies;
     });
 
-  }
+    // this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
+    //   return changes.map(c => ({ ...c.payload.val() }));
+    // });
 
-  ngOnInit() {
-    this.getMoviesFromService();
   }
+  
   //Action when select a Movie in List item
   selectedMovie: Movie;
+
   onSelect(movie: Movie): void {
-      this.selectedMovie = movie;
-      console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
-      // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+    // Angular Firebase
+    this.selectedMovie = movie;
+    console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+    // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
   }
 }

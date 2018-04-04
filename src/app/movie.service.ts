@@ -20,7 +20,9 @@ export class MovieService {
   private moviesURL = environment.firebase.databaseURL;
 
   movies : AngularFireList<Movie>;
-  thisMovies: Observable<any>;
+  movie: Observable<any>;
+
+  moviespath: string = "movies";
 
   constructor(
     private db: AngularFireDatabase,
@@ -42,14 +44,28 @@ export class MovieService {
     // );
 
     // General code Angular Fire Database
-    this.movies = this.db.list<Movie>("movies");
-    console.log('receivedMovies = ' + this.movies);
+    this.movies = this.db.list<Movie>(this.moviespath);
+    console.log('receivedMovies = ' + JSON.stringify(this.movies));
     return this.movies;
     
   }
 
   getMovieFromId(id: number): Observable<Movie> {    
-    return of(fakeMovies.find(movie => movie.id === id));
+    // return of(fakeMovies.find(movie => movie.id === id));
+
+    // Angular Firebase
+    this.movie = this.db.object<Movie>(this.moviespath + "/" + id ).snapshotChanges()
+    .map(c => ({ ...c.payload.val() }));
+    return this.movie;
+  }
+
+  updateMovie(movie: Movie) {
+    var Editproduct = JSON.parse(JSON.stringify( movie )); //remotes the undefined fields
+
+    var updates = {};
+    updates['/' + this.moviespath + '/' + movie.id] = movie;
+    console.log('updated Movie = ' + JSON.stringify(updates));
+    return this.db.database.ref().update(updates);
   }
 
 }
