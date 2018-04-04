@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { fakeMovies } from './fake-movies';
+// import { fakeMovies } from './fake-movies';
 import { Movie } from '../models/movie';
 
 import { environment } from '../environments/environment';
@@ -50,12 +50,12 @@ export class MovieService {
     
   }
 
-  getMovieFromId(id: number): Observable<Movie> {    
+  getMovieFromId(id: string): Observable<Movie> {    
     // return of(fakeMovies.find(movie => movie.id === id));
 
     // Angular Firebase
     this.movie = this.db.object<Movie>(this.moviespath + "/" + id ).snapshotChanges()
-    .map(c => ({ ...c.payload.val() }));
+    .map(c => ({ id:c.key,...c.payload.val() }));
     return this.movie;
   }
 

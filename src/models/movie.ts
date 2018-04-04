@@ -1,5 +1,5 @@
-export class Movie{
-    id: number;
+export interface Movie{
+    id: string;
     name: string;
     releaseYear: number;
 }

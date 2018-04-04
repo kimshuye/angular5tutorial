@@ -43,13 +43,13 @@ export class MoviesComponent implements OnInit {
     // this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
 
     // Angular Firebase
-    this.movieService.getMovies().valueChanges().subscribe(snapMovies => {
-      this.movies = snapMovies;
-    });
-
-    // this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
-    //   return changes.map(c => ({ ...c.payload.val() }));
+    // this.movieService.getMovies().valueChanges().subscribe(snapMovies => {
+    //   this.movies = snapMovies;
     // });
+
+    this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
+      return changes.map(c => ({ id:c.key,...c.payload.val() }));
+    });
 
   }
   
