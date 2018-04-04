@@ -34,7 +34,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   save():void{
-    this.movieService.updateMovie(this.movie).subscribe(() => this.goBack());
+    this.movieService.updateMovie(this.movie).then(()=> this.goBack() );    
   }
 
   goBack(): void {

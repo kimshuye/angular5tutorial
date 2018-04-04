@@ -2,7 +2,7 @@
 <div class="parent">
     <ol class="movies">
         <li class="movieListItem" 
-            *ngFor="let eachMovie of movies " 
+            *ngFor="let eachMovie of movies | async" 
             
             >
             <a routerLink="/detail/{{eachMovie.id-1}}" style="text-decoration:none;" >

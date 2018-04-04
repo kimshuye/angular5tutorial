@@ -22,13 +22,17 @@ export class MoviesComponent implements OnInit {
 
   // REST API
   // movies: Movie[];
-  movies: any;
 
   // Angular Firebase
-  // movies: any;
+  movies: any;
+  
 
   constructor(private movieService:MovieService) {  
 
+  }
+
+  ngOnInit() {
+    this.getMoviesFromService();
   }
 
   getMoviesFromService(){
@@ -37,24 +41,25 @@ export class MoviesComponent implements OnInit {
     
     // REST API
     // this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies.slice(1));
-    this.movieService.getMovies().subscribe(updatedMovies => this.movies = updatedMovies );
 
     // Angular Firebase
-    // this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
-    //   return changes.map(c => ({ ...c.payload.val() }));
+    // this.movieService.getMovies().valueChanges().subscribe(snapMovies => {
+    //   this.movies = snapMovies;
     // });
-  }
 
-  ngOnInit() {
-    this.getMoviesFromService();
-  }
+    this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
+      return changes.map(c => ({ id:c.key,...c.payload.val() }));
+    });
 
+  }
+  
   //Action when select a Movie in List item
   selectedMovie: Movie;
-  
+
   onSelect(movie: Movie): void {
-      this.selectedMovie = movie;
-      console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
-      // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+    // Angular Firebase
+    this.selectedMovie = movie;
+    console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
+    // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
   }
 }
