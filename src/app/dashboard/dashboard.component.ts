@@ -10,7 +10,8 @@ import { MovieService } from '../movie.service';
 export class DashboardComponent implements OnInit {
 
   // REST API
-  movies: Movie[] = [];
+  // movies: Movie[] = [];
+  movies: any;
   
   // Angular Firebase
   // movies: any;
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
   getMovies(){
     // REST API
     this.movieService.getMovies().subscribe(movies => this.movies = movies.slice(1,5) );
+    // this.movieService.getMovies().subscribe(movies => this.movies = movies );
 
     // Angular Firebase
     // this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {

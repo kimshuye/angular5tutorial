@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { fakeMovies } from './fake-movies';
+// import { fakeMovies } from './fake-movies';
 import { Movie } from '../models/movie';
 
 import { environment } from '../environments/environment';
@@ -39,7 +39,8 @@ export class MovieService {
     // return of(fakeMovies);
 
     // REST API
-    return this.http.get<Movie[]>(this.moviesURL + '/movies/' + '.json').pipe(
+    return this.http.get<Movie[]>(this.moviesURL + '/movies/' + '.json')
+    .pipe(
       tap(receivedMovies => console.log(`receivedMovies = ${JSON.stringify(receivedMovies)}`)),
       catchError(error => of([]))
     );
@@ -50,7 +51,7 @@ export class MovieService {
     // return this.movies;
   }
 
-  getMovieFromId(id: number): Observable<Movie> { 
+  getMovieFromId(id: string): Observable<Movie> { 
     // Fake Data
     // return of(fakeMovies.find(movie => movie.id === id));
 
