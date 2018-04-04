@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
 
     // Angular Firebase
     this.movies = this.movieService.getMovies().snapshotChanges().map(changes => {
-      return changes.map(c => ({ ...c.payload.val() })).slice(0,4);
+      return changes.map(c => ({ id:c.key ,...c.payload.val() })).slice(0,4);
     });
   }
 

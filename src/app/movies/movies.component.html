@@ -26,15 +26,16 @@
     <ol class="movies">
         <li class="movieListItem" 
             *ngFor="let eachMovie of movies | async" 
-            
+            [class.selected]="eachMovie === selectedMovie" 
+            (click)="onSelect(eachMovie)"
             >
             <a routerLink="/detail/{{eachMovie.id}}" style="text-decoration:none;" >
                 {{eachMovie.name}} - {{eachMovie.releaseYear}}
             </a>
             
             <div *ngIf="eachMovie === selectedMovie">
-            <input type="text" [(ngModel)]="selectedMovie.name" name="" id=""><br><br>
-            <input type="text" [(ngModel)]="selectedMovie.releaseYear" name="" id="">
+            <input type="text" [(ngModel)]="selectedMovie.name" (keyup.enter)="updateMovie()" name="" id=""><br><br>
+            <input type="text" [(ngModel)]="selectedMovie.releaseYear" (keyup.enter)="updateMovie()" name="" id="">
             </div>
         </li>
     </ol>

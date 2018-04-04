@@ -53,6 +53,10 @@ export class MoviesComponent implements OnInit {
     console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
     // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
   }
+
+  updateMovie():void{
+    this.movieService.updateMovie(this.selectedMovie).then(()=>{ this.selectedMovie=null; });    
+  }
   
   // Action when insert a Movie in List item
   newMovie: Movie;
