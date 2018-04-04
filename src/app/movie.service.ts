@@ -68,4 +68,14 @@ export class MovieService {
     return this.db.database.ref().update(updates);
   }
 
+  /** POST: add a new movie to the server */
+  addMovie(newMovie) {        
+    var addMovie = JSON.parse(JSON.stringify( newMovie )); //remotes the undefined fields
+
+    // var addmovie = {};
+    // addmovie['/' + this.moviespat + '/' ] = addMovie;
+    console.log('insert Movie = ' + JSON.stringify(addMovie));
+    return this.db.database.ref(this.moviespath).push(addMovie);
+  }
+
 }

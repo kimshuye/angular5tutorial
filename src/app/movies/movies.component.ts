@@ -12,21 +12,12 @@ import { MovieService } from '../movie.service';
 })
 export class MoviesComponent implements OnInit {
 
-  // movie:Movie = {
-  //   id: 1,
-  //   name: "Star Wars",
-  //   releaseYear: 1977
-  // };
-
-  // movies = fakeMovies;
-
   // REST API
   // movies: Movie[];
 
   // Angular Firebase
   movies: any;
   
-
   constructor(private movieService:MovieService) {  
 
   }
@@ -62,4 +53,24 @@ export class MoviesComponent implements OnInit {
     console.log(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
     // alert(`selectedMovie = ${JSON.stringify(this.selectedMovie)}`);
   }
+  
+  // Action when insert a Movie in List item
+  newMovie: Movie;
+  // add new movie
+
+  addMovie(name: string, releaseYear:string): void {
+    name = name.trim();
+    if (Number.isNaN(Number(releaseYear)) || !name || Number(releaseYear) === 0) {
+      alert('Name must not be blank, Release year must be a number');
+      return;
+    }
+    let insertmovie = {
+      name:name,
+      releaseYear:Number(releaseYear)
+    }
+    
+    this.movieService.addMovie(insertmovie);
+    
+  }
+
 }

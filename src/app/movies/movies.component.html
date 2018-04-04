@@ -1,11 +1,34 @@
 <h2>My favorite movies</h2>
+
+<div style="text-align: left;">
+    <table style="width: 400px">
+        <tr>
+            <td>New movie's name:</td>
+            <td>
+                <input #movieName placeholder="name">
+            </td>
+        </tr>
+        <tr>
+            <td>release year: </td>
+            <td>
+                <input #releaseYear placeholder="release year">
+            </td>
+        </tr>
+        <tr>
+            <button (click)="addMovie(movieName.value, releaseYear.value); movieName.value=''; releaseYear.value=''">
+                add
+            </button>
+        </tr>
+    </table>
+</div>
+
 <div class="parent">
     <ol class="movies">
         <li class="movieListItem" 
             *ngFor="let eachMovie of movies | async" 
             
             >
-            <a routerLink="/detail/{{eachMovie.id-1}}" style="text-decoration:none;" >
+            <a routerLink="/detail/{{eachMovie.id}}" style="text-decoration:none;" >
                 {{eachMovie.name}} - {{eachMovie.releaseYear}}
             </a>
             
