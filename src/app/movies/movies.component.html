@@ -34,8 +34,8 @@
             </a>
             
             <div *ngIf="eachMovie === selectedMovie">
-            <input type="text" [(ngModel)]="selectedMovie.name" (keyup.enter)="updateMovie()" name="" id=""><br><br>
-            <input type="text" [(ngModel)]="selectedMovie.releaseYear" (keyup.enter)="updateMovie()" name="" id="">
+            <input type="text" [(ngModel)]="selectedMovie.name" (keyup.enter)="updateMovie()" (blur)="updateMovie()" name="" id=""><br><br>
+            <input type="text" [(ngModel)]="selectedMovie.releaseYear" (keyup.enter)="updateMovie()" (blur)="updateMovie()" name="" id="">
             </div>
         </li>
     </ol>
