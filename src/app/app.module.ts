@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { MovieSearchComponent } from './movie-search/movie-search.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     MoviesComponent,
     MovieDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    MovieSearchComponent
   ],
   imports: [
     BrowserModule,

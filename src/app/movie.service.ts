@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 // import { fakeMovies } from './fake-movies';
+
+import { Pipe, PipeTransform } from '@angular/core';
 import { Movie } from '../models/movie';
 
 import { environment } from '../environments/environment';
@@ -23,6 +25,8 @@ export class MovieService {
   movie: Observable<any>;
 
   moviespath: string = "movies";
+
+  searchmovies: Observable<any>;
 
   constructor(
     private db: AngularFireDatabase,
@@ -62,10 +66,12 @@ export class MovieService {
   updateMovie(movie: Movie) {
     var Editproduct = JSON.parse(JSON.stringify( movie )); //remotes the undefined fields
 
-    var updates = {};
-    updates['/' + this.moviespath + '/' + movie.id] = movie;
-    console.log('updated Movie = ' + JSON.stringify(updates));
-    return this.db.database.ref().update(updates);
+    // var updates = {};
+    // updates['/' + this.moviespath + '/' + movie.id] = movie;
+    // console.log('updated Movie = ' + JSON.stringify(updates));
+    // return this.db.database.ref().update(updates);
+
+    return this.db.object(this.moviespath + '/' + movie.id).update({name : movie.name,releaseYear:movie.releaseYear});
   }
 
   /** POST: add a new movie to the server */
@@ -84,6 +90,25 @@ export class MovieService {
     // this.db.list<Movie>(this.moviespath).remove(movieId);
     // return this.db.list<Movie>(this.moviespath);
     return this.db.list<Movie>(this.moviespath).remove(movieId);
+  }
+
+  findMovies(search) {
+    // return this.db.list<Movie>(this.moviespath, {      query: {   orderByChild: 'name'    }    } ); 
+
+    this.searchmovies = this.db.list<Movie>(this.moviespath).snapshotChanges().map((snap)=>{
+      const data = snap.map(c => ({ id: c.payload.key, ...c.payload.val() }));
+      search = search.toLowerCase();
+      return data.filter(item => item.name.toLowerCase().search(search) > -1 );
+    });
+    return this.searchmovies;
+    
+    // this.searchmovies = this.db.list<Movie>(this.moviespath).snapshotChanges().map(snap => {
+    //   const findmovies = snap.map(c => ({ $key: c.payload.key, ...c.payload.val() }));
+    //   console.log('finded Movie = ' + searchMovies);
+    //   return findmovies.filter(item =>{ item.name.indexOf(searchMovies) > -1   } );
+    // });
+    // return this.searchmovies;
+
   }
 
 }
