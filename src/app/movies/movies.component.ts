@@ -77,4 +77,11 @@ export class MoviesComponent implements OnInit {
     
   }
 
+  deleteMovie(movieId){
+    // this.movies = this.movieService.deleteMovie(movieId).snapshotChanges().map(changes => {
+    //   return changes.map(c => ({ id:c.key,...c.payload.val() }));
+    // });
+    this.movieService.deleteMovie(movieId);
+  }
+
 }

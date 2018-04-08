@@ -32,11 +32,12 @@
             <a routerLink="/detail/{{eachMovie.id}}" style="text-decoration:none;" >
                 {{eachMovie.name}} - {{eachMovie.releaseYear}}
             </a>
-            
+            <!-- {{eachMovie.name}} - {{eachMovie.releaseYear}}
             <div *ngIf="eachMovie === selectedMovie">
             <input type="text" [(ngModel)]="selectedMovie.name" (keyup.enter)="updateMovie()" (blur)="updateMovie()" name="" id=""><br><br>
             <input type="text" [(ngModel)]="selectedMovie.releaseYear" (keyup.enter)="updateMovie()" (blur)="updateMovie()" name="" id="">
-            </div>
+            </div> -->
+            <button title="delete movie" (click)="deleteMovie(eachMovie.id)">x</button>
         </li>
     </ol>
     <!-- <app-movie-detail [(movie)]="selectedMovie"></app-movie-detail> -->

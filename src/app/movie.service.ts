@@ -43,7 +43,7 @@ export class MovieService {
     //   catchError(error => of([]))
     // );
 
-    // General code Angular Fire Database
+    // Angular Fire Database
     this.movies = this.db.list<Movie>(this.moviespath);
     console.log('receivedMovies = ' + JSON.stringify(this.movies));
     return this.movies;
@@ -76,6 +76,14 @@ export class MovieService {
     // addmovie['/' + this.moviespat + '/' ] = addMovie;
     console.log('insert Movie = ' + JSON.stringify(addMovie));
     return this.db.database.ref(this.moviespath).push(addMovie);
+  }
+
+  /** DELETE: delete the movie from the server */  
+  deleteMovie(movieId) {
+    console.log('deleted Movie = ' + movieId);
+    // this.db.list<Movie>(this.moviespath).remove(movieId);
+    // return this.db.list<Movie>(this.moviespath);
+    return this.db.list<Movie>(this.moviespath).remove(movieId);
   }
 
 }
