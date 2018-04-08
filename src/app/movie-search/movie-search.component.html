@@ -1,20 +1,22 @@
 
 <br>
-<label for="">Search : </label> <input type="text" name="" id="" #searchText (keyup)="getSearchMovies(searchText.value)" placeholder="Name Movies">
-
+<div style="text-align: left;">
+  <label for="">Search : </label> <input type="text" name="" id="" #searchText (keyup)="getSearchMovies(searchText.value)" placeholder="Name Movies">
+</div>
 <div class="parent">
-  <ol class="movies">
+  
+  <ul class="movies">
       <li class="movieListItem" 
           *ngFor="let eachMovie of movies " 
           [class.selected]="eachMovie === selectedMovie" 
           (click)="onSelect(eachMovie)"
           >
-          
+
           {{eachMovie.name}} - {{eachMovie.releaseYear}}
           <div *ngIf="eachMovie === selectedMovie">
           <input type="text" [(ngModel)]="selectedMovie.name" (keyup.enter)="updateMovie()" (blur)="updateMovie()" name="" id=""><br><br>
           <input type="text" [(ngModel)]="selectedMovie.releaseYear" (keyup.enter)="updateMovie()" (blur)="updateMovie()" name="" id="">
           </div>
       </li>
-  </ol>
+  </ul>
 </div>

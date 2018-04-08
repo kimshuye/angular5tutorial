@@ -64,10 +64,10 @@ export class MovieService {
   }
 
   updateMovie(movie: Movie) {
-    var Editproduct = JSON.parse(JSON.stringify( movie )); //remotes the undefined fields
+    var editmovie = JSON.parse(JSON.stringify( movie )); //remotes the undefined fields
 
     // var updates = {};
-    // updates['/' + this.moviespath + '/' + movie.id] = movie;
+    // updates['/' + this.moviespath + '/' + movie.id] = editmovie;
     // console.log('updated Movie = ' + JSON.stringify(updates));
     // return this.db.database.ref().update(updates);
 
@@ -92,14 +92,22 @@ export class MovieService {
     return this.db.list<Movie>(this.moviespath).remove(movieId);
   }
 
-  findMovies(search) {
-    // return this.db.list<Movie>(this.moviespath, {      query: {   orderByChild: 'name'    }    } ); 
+  findMovies(search,casesensitive:boolean = false) {
 
     this.searchmovies = this.db.list<Movie>(this.moviespath).snapshotChanges().map((snap)=>{
       const data = snap.map(c => ({ id: c.payload.key, ...c.payload.val() }));
-      search = search.toLowerCase();
-      return data.filter(item => item.name.toLowerCase().search(search) > -1 );
-    });
+      if(casesensitive){
+        return data.filter(item => item.name.search(search) > -1 );
+      }
+      else{
+        search = search.toLowerCase();
+        return data.filter(item => item.name.toLowerCase().search(search) > -1 );
+      }
+
+    }).pipe(
+      tap(foundedMovies => console.log(`founded movies = ${JSON.stringify(foundedMovies)}`)),
+      catchError(error => of(null))
+    );
     return this.searchmovies;
     
     // this.searchmovies = this.db.list<Movie>(this.moviespath).snapshotChanges().map(snap => {
