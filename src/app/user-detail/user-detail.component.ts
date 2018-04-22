@@ -7,7 +7,7 @@ import { emailValidator } from '../models/CustomValidators';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  styleUrls: ['./user-detail.component.css','../../assets/bootstrap.css']
 })
 export class UserDetailComponent implements OnInit {
 
