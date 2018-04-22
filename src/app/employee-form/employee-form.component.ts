@@ -14,14 +14,24 @@ export class EmployeeFormComponent implements OnInit {
   alias;//optional
   jobCategory; //optional. Eg: technology, social, sciences, doctor 
 
-  jobCategories = ["technology", "social", "sciences", "doctor"];
-  newEmployee: Employee;
+  jobCategories = [
+    {value: 'technology', viewValue: 'Technology'},
+    {value: 'social', viewValue: 'Social'},
+    {value: 'sciences', viewValue: 'Sciences'},
+    {value: 'doctor', viewValue: 'Doctor'}
+  ];
+  
+  newEmployee: Employee;  
   submitted = false;
 
-  constructor() { 
-    
+  newEmpTemp  = {    
+    name : '',
+    dateOfBirth : new Date(),
+    alias:'',
+    jobCategory:''
+  };
 
-  }
+  constructor() {  }
 
   ngOnInit() {
     
@@ -29,7 +39,8 @@ export class EmployeeFormComponent implements OnInit {
     this.name = "Hoang";
     this.dateOfBirth = new Date();
     this.alias = 'Hoa';
-    this.jobCategory = this.jobCategories[0];
+    this.jobCategory = this.jobCategories[0].value;
+    
 
   }
 
@@ -46,8 +57,13 @@ export class EmployeeFormComponent implements OnInit {
       alias : this.alias,//optional
       jobCategory : this.jobCategory //optional. Eg: technology, social, sciences, doctor 
     }
+
+
     console.log("newEmp : ");
     console.log(newEmp);
+
+    // console.log("newEmpTemp : ");
+    // console.log(this.newEmpTemp);
   }
 
 }

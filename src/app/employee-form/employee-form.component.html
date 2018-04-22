@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
       <label for="dateOfBirth">Date of birth</label>
-      <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth"  required
+      <input type="datetime-local" class="form-control" id="dateOfBirth" name="dateOfBirth"  required
         [(ngModel)]="dateOfBirth" #dob="ngModel">
         <div [hidden]="dob.valid || dob.pristine" class="alert alert-danger">
             Date of birth is required(must not blank)
@@ -21,13 +21,24 @@
     </div>
     <div class="form-group">
       <label for="alias">Alias</label>
-      <input type="text" class="form-control" id="alias">
+      <input type="text" class="form-control" id="alias" name="alias"
+      [(ngModel)]="alias"
+      >
     </div>
     <div class="form-group">
       <label for="jobCategory">Job's category</label>
-      <select class="form-control" id="jobCategory" required>
-        <option *ngFor="let eachJobCategory of jobCategories" [value]="eachJobCategory">{{eachJobCategory}}</option>
+      <select class="form-control" id="jobCategory" name="jobCategory" [(ngModel)]="jobCategory" required>
+        <option *ngFor="let eachJobCategory of jobCategories" [value]="eachJobCategory.value">{{eachJobCategory.viewValue}}</option>
       </select>
+
+      <!-- <mat-form-field>
+        <mat-select placeholder="Favorite food">
+          <mat-option *ngFor="let food of jobCategories" [value]="food.value">
+            {{ food.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
     </div>
     <button type="button" class="btn btn-default" (click)="addNewEmployee(); employeeForm.reset()">New Employee</button>
     <button type="submit" class="btn btn-success" [disabled]="!employeeForm.form.valid">Submit</button>
