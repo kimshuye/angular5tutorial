@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +32,14 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
     MessagesComponent,
     DashboardComponent,
     MovieSearchComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+
     AppRoutingModule,
     HttpClientModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
