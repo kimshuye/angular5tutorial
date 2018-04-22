@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-// import { MatSelectModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 // import 'hammerjs';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +46,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     BrowserAnimationsModule,
     NoopAnimationsModule,
 
-    // MatSelectModule,
+    MatSelectModule,
 
     AppRoutingModule,
     HttpClientModule,
