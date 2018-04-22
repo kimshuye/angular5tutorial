@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // import { fakeMovies } from './fake-movies';
 
 import { Pipe, PipeTransform } from '@angular/core';
-import { Movie } from '../models/movie';
+import { Movie } from './models/movie';
 
 import { environment } from '../environments/environment';
 import { AngularFireDatabase , AngularFireList } from 'angularfire2/database';

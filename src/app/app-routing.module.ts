@@ -5,7 +5,8 @@ import { MoviesComponent } from './movies/movies.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { Movie } from '../models/movie';
+import { Movie } from './models/movie';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'movies',component:MoviesComponent},
   { path: 'messages',component:MessagesComponent},
   { path: 'detail/:id',component:MovieDetailComponent},
+  { path: 'employeeform',component:EmployeeFormComponent},
 ];
 
 @NgModule({

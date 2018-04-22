@@ -21,6 +21,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
     MovieDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
+    EmployeeFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase ),
     AngularFireDatabaseModule,
+    
   ],
   providers: [MovieService, MessageService],
   bootstrap: [AppComponent]

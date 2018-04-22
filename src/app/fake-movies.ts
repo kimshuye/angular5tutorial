@@ -1,4 +1,5 @@
-import { Movie } from '../models/movie';
+import { Movie } from './models/movie';
+
 // export var fakeMovies: Movie[] = [
 //     {
 //         id: 1,

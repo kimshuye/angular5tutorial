@@ -1,5 +1,5 @@
 import { Component, OnInit, Input ,Output } from '@angular/core';
-import { Movie } from '../../models/movie';
+import { Movie } from '../models/movie';
 
 // Router
 import { ActivatedRoute } from '@angular/router';
