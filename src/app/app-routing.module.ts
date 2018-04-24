@@ -11,8 +11,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 const routes: Routes = [
-  { path: '',redirectTo:'/dashboard',pathMatch: 'full'},
-  { path: 'dashboard',component:DashboardComponent},
+  { path: '',redirectTo:'/',pathMatch: 'full'},
+  { path: '',component:DashboardComponent},
   { path: 'movies',component:MoviesComponent},
   { path: 'messages',component:MessagesComponent},
   { path: 'detail/:id',component:MovieDetailComponent},
